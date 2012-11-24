@@ -20,24 +20,22 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $om)
     {
-        $password = "helloworld";
-
         $objs = array(
             array(
-                "username"    => "siciarek",
-                "password"    => $password,
+                "username"    => "jsiciarek",
+                "password"    => "jsiciarek",
                 "first_name"  => "Jacek",
                 "last_name"   => "Siciarek",
-                "description" => "My App Developer",
+                "description" => "MyEvent! Developer",
                 "email"       => "siciarek@gmail.com",
                 "group"       => "owners",
             ),
             array(
                 "username"    => "asiciarek",
-                "password"    => $password,
+                "password"    => "asiciarek",
                 "first_name"  => "Anna",
                 "last_name"   => "Siciarek",
-                "description" => "The Wife of My App Developer",
+                "description" => "The Wife of MyEvent! Developer",
                 "email"       => "anna_siciarek@o2.pl",
                 "group"       => "owners",
             ),

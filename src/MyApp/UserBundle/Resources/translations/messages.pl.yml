@@ -6,9 +6,11 @@
 
 "Welcome" : "Witaj"
 "Home" : "Strona główna"
-"Secured page" : "Strona zabezpieczona"
-"Public page" : "Strona publiczna"
-"Editor" : "Edytor"
+
+"Events List" : "Lista wydarzeń"
+"Initiate Event" : "Inicjuj wydarzenie"
+"Participants" : "Uczestnicy"
+"My Settings" : "Moje ustawienia"
 
 # Login form:
 

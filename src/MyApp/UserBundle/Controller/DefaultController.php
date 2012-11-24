@@ -19,30 +19,39 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/public.html", name="_public")
+     * @Route("/events-list.html", name="_events_list")
      * @Template()
      */
-    public function publicAction()
+    public function eventsListAction()
     {
-        return array("title" => "Public page");
+        return array("title" => "Events List");
     }
 
     /**
-     * @Route("/secured.html", name="_secured")
+     * @Route("/initiate-event.html", name="_initiate_event")
      * @Template()
      */
-    public function securedAction()
+    public function initiateEventAction()
     {
-        return array("title" => "Secured page");
+        return array("title" => "Initiate Event");
     }
 
     /**
-     * @Route("/editor.html", name="_editor")
+     * @Route("/participants.html", name="_participants")
      * @Template()
      */
-    public function editorAction()
+    public function participantsAction()
     {
-        return array("title" => "Editor");
+        return array("title" => "Participants");
+    }
+
+    /**
+     * @Route("/my-settings.html", name="_my_settings")
+     * @Template()
+     */
+    public function mySettingsAction()
+    {
+        return array("title" => "My Settings");
     }
 
     public function getTokenAction()
