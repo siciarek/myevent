@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<project name="myapp" default="build-all-load" basedir=".">
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <property name="entities.list" value="Group,User" />
+
+    <target name="build-all-load" depends="cc, db, fix, ax, cc" />
+
+    <target name="ge">
+        <foreach target="genenerate-entity" param="entity" list="${entities.list}"/>
+    </target>
+
+    <target name="genenerate-entity">
+        <exec executable="php">
+            <arg line="app/console doctrine:generate:entities MyAppUserBundle:${entity} --path=src --no-backup"/>
+        </exec>
+    </target>
+
+    <target name="db" depends="ge">
+
+        <exec executable="php">
+            <arg line="app/console doctrine:database:drop --force"/>
+        </exec>
+
+        <exec executable="php">
+            <arg line="app/console doctrine:database:create"/>
+        </exec>
+
+        <exec executable="php">
+            <arg line="app/console doctrine:schema:update --force"/>
+        </exec>
+
+    </target>
+
+    <target name="fix">
+        <exec executable="php">
+            <arg line="app/console doctrine:fixtures:load --no-interaction"/>
+        </exec>
+    </target>
+
+    <target name="ax" depends="cc">
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="web/bundles/myappuser" includes="**/*"/>
+            <fileset dir="web/css" includes="**/*"/>
+            <fileset dir="web/images" includes="**/*"/>
+            <fileset dir="web/js" includes="**/*"/>
+        </delete>
+        <exec executable="php">
+            <arg line="app/console assets:install web"/>
+        </exec>
+        <exec executable="php">
+            <arg line="app/console assetic:dump --no-debug"/>
+        </exec>
+    </target>
+
+    <target name="a" depends="cc">
+        <exec executable="php">
+            <arg line="app/console assets:install"/>
+        </exec>
+    </target>
+
+    <target name="cc">
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="app/cache" excludes=".gitkeep" includes="**/*"/>
+            <fileset dir="app/logs" excludes=".gitkeep" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="up">
+        <exec executable="php">
+            <arg line="composer.phar update"/>
+        </exec>
+    </target>
+
+</project>
+

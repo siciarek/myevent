@@ -1,0 +1,50 @@
+MyApp\UserBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: MyApp\UserBundle\Entity\UserRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        first_name:
+          type: string
+          length: 64
+        last_name:
+          type: string
+          length: 64
+        description:
+          type: string
+          nullable: true
+        logged_at:
+          type: datetime
+          nullable: true
+        created_at:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: create
+        updated_at:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: update
+    lifecycleCallbacks: {  }
+    manyToMany:
+        groups:
+            targetEntity: MyApp\UserBundle\Entity\Group
+            joinTable:
+                name: user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+                        nullable: false
+                        unique: false
+            cascade:
+               - all

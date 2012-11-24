@@ -1,0 +1,36 @@
+/* TINYMCE DOCUMENT STYLE: */
+
+body {
+    font-family: "Times New Roman", serif !important;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+p, td, li {
+    font-family: "Times New Roman", serif !important;
+    font-size: 18px !important;
+}
+
+p, li {
+    margin: 0;
+    line-height: 24px !important;
+}
+
+p, ul, ol {
+    margin-bottom: 8px;
+}
+
+table {
+    margin-bottom: 18px;
+    margin-top: 18px;
+    border-collapse: collapse;
+}
+
+table tbody th {
+    background-color: silver;
+}
+
+ul, ol {
+    padding-left:32px;
+}
+

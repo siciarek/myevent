@@ -1,0 +1,14 @@
+MyApp\UserBundle\Entity\Group:
+    type: entity
+    table: _group
+    repositoryClass: MyApp\UserBundle\Entity\GroupRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        description:
+            type: string
+            length: 255
+            nullable: true

@@ -1,0 +1,56 @@
+{% include 'MyAppUserBundle::header.html.twig' %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {% block content %}{% endblock %}
+{% else %}
+    <h1>{{ "Insert access data" | trans() }}</h1>
+    <div id="signin-form">
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+
+            <table>
+                <tbody>
+                {% if error %}
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td>
+                            <ul class="error_list">
+                                <li>{{ error|trans({}, 'FOSUserBundle') }}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th><label for="username">{{ "Username or E-Mail" | trans() }}</label></th>
+                    <td><input type="text" id="username" name="_username"
+                               value="{% if last_username is defined %}{{ last_username }}{% endif %}"
+                               required="required"/></td>
+                </tr>
+                <tr>
+                    <th><label for="password">{{ "Password" | trans() }}</label></th>
+                    <td><input type="password" id="password" name="_password" required="required"/></td>
+                </tr>
+                <tr>
+                    <th><label for="remember_me">{{ "Remember" | trans() }}</label></th>
+                    <td>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                        <input type="hidden" name="_csrf_token"
+                               value="{% render('MyAppUserBundle:Default:getToken') %}"/>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" id="_submit" name="_submit"
+                               value="{{ 'security.login.submit' | trans({}, 'FOSUserBundle') }}"/>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+{% endif %}
+
+{% include 'MyAppUserBundle::footer.html.twig' %}

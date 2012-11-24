@@ -1,0 +1,7 @@
+/* TINYMCE GUI STYLE: */
+
+a#mce_0_fontselect_text,
+a#mce_0_fontsizeselect_text
+{
+    width: 100px !important;
+}

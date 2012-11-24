@@ -1,0 +1,69 @@
+
+/* 16 x 16 */
+
+.attachmentIcon      { background-image: url(/images/icons/attachment.png) !important; }
+.clockIcon           { background-image: url(/images/icons/clock.png) !important; }
+.cogIcon             { background-image: url(/images/icons/cog.png) !important; }
+.forwardIcon         { background-image: url(/images/icons/forward.png) !important; }
+
+.filterIcon          { background-image: url(/images/icons/filter.gif) !important; }
+.deleteFilterIcon    { background-image: url(/images/icons/delete-filter.gif) !important; }
+.warningIcon         { background-image: url(/images/icons/warning.png) !important; }
+.infoIcon            { background-image: url(/images/icons/info.png) !important; }
+.bookIcon            { background-image: url(/images/icons/training.png) !important; }
+
+.userIcon            { background-image: url(/images/icons/user-male.gif) !important; }
+.groupIcon           { background-image: url(/images/icons/group.png) !important; }
+.resourceIcon        { background-image: url(/images/icons/folder-open.gif) !important; }
+.referenceIcon       { background-image: url(/images/icons/reference.png) !important; }
+
+.rootIcon            { background-image: url(/images/icons/home.png) !important; }
+.searchResultsIcon   { background-image: url(/images/icons/go-search.png) !important; }
+.userMaleIcon        { background-image: url(/images/icons/user-male.gif) !important; }
+.userFemaleIcon      { background-image: url(/images/icons/user-female.gif) !important; }
+.mailIcon            { background-image: url(/images/icons/mail.png) !important; }
+.branchIcon          { background-image: url(/images/icons/branch.png) !important; }
+.brandIcon           { background-image: url(/images/icons/star.png) !important; }
+.addIcon             { background-image: url(/images/icons/add.png) !important; }
+.updateIcon          { background-image: url(/images/icons/update.png) !important; }
+.resetIcon           { background-image: url(/images/icons/reset.png) !important; }
+
+.documentIcon        { background-image: url(/images/icons/document.gif) !important; }
+.folderIcon          { background-image: url(/images/icons/folder.gif) !important; }
+.folderOpenIcon      { background-image: url(/images/icons/folder-open.gif) !important; }
+.versionIcon         { background-image: url(/images/icons/version.png) !important; }
+.publishDocumentIcon { background-image: url(/images/icons/share-document.png) !important; }
+.publishFolderIcon   { background-image: url(/images/icons/share-folder.png) !important; }
+.expandAllIcon       { background-image: url(/images/icons/expand-all.png) !important; }
+.collapseAllIcon     { background-image: url(/images/icons/collapse-all.png) !important; }
+
+.shareIcon           { background-image: url(/images/icons/share.png) !important; }
+.publishIcon         { background-image: url(/images/icons/publish.png) !important; }
+
+.addFolderIcon       { background-image: url(/images/icons/add-folder.png) !important; }
+.addDocumentIcon     { background-image: url(/images/icons/add-document.png) !important; }
+.uploadDocumentIcon  { background-image: url(/images/icons/upload-document.png) !important; }
+.downloadVersionIcon { background-image: url(/images/icons/download-version.png) !important; }
+
+.renameIcon          { background-image: url(/images/icons/rename.png) !important; }
+.editIcon            { background-image: url(/images/icons/rename.png) !important; }
+.deleteIcon          { background-image: url(/images/icons/delete.png) !important; }
+
+.defaultIcon         { background-image: url(/images/icons/node-document.png) !important; }
+
+.wordIcon            { background-image: url(/images/icons/node-word.png) !important; }
+.excelIcon           { background-image: url(/images/icons/node-excel.png) !important; }
+.powerpointIcon      { background-image: url(/images/icons/node-powerpoint.png) !important; }
+
+.oowriterIcon        { background-image: url(/images/icons/node-oowriter.png) !important; }
+.oocalcIcon          { background-image: url(/images/icons/node-oocalc.png) !important; }
+.ooimpressIcon       { background-image: url(/images/icons/node-ooimpress.png) !important; }
+
+.pdfIcon             { background-image: url(/images/icons/node-pdf.png) !important; }
+.imageIcon           { background-image: url(/images/icons/node-image.png) !important; }
+.xmlIcon             { background-image: url(/images/icons/node-xml.png) !important; }
+.htmlIcon            { background-image: url(/images/icons/node-html.png) !important; }
+.txtIcon             { background-image: url(/images/icons/node-txt.png) !important; }
+.csvIcon             { background-image: url(/images/icons/node-csv.png) !important; }
+.binaryIcon          { background-image: url(/images/icons/node-binary.png) !important; }
+.archiveIcon         { background-image: url(/images/icons/node-archive.png) !important; }

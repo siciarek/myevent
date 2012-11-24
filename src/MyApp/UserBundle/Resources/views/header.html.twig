@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{{ "My App" | trans() }}
+        :: {% if title is defined %}{{ title | trans() }}{% else %}{{ "Web application template" | trans() }}{% endif %}</title>
+    <link rel="icon" sizes="16x16" href="{{ asset("favicon.ico") }}"/>
+
+    {% stylesheets
+    '@MyAppUserBundle/Resources/public/css/reset.css'
+    '@MyAppUserBundle/Resources/public/css/icons.css'
+    '@MyAppUserBundle/Resources/public/css/main.css'
+    '@MyAppUserBundle/Resources/public/css/menu.css'
+    '@MyAppUserBundle/Resources/public/css/signin-form.css'
+    '@MyAppUserBundle/Resources/public/css/tinymce.css'
+    output="css/myapp.css" %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% javascripts
+    '@MyAppUserBundle/Resources/public/js/jquery-1.8.3.min.js'
+    '@MyAppUserBundle/Resources/public/js/translations.js'
+    output="css/myapp.js" %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block jsinclude %}{% endblock %}
+
+</head>
+<body>
+
+
+<div id="menu">
+    <div>
+        <ul>
+            <li>{{ link_to("Home" | trans(), "_homepage") }}</li>
+            <li>{{ link_to("Public page" | trans(), "_public") }}</li>
+
+            {% if app.user %}
+                <li>{{ link_to("Secured page" | trans(), "_secured") }}</li>
+                <li>{{ link_to("Editor" | trans(), "_editor") }}</li>
+            {% endif %}
+
+            {% if app.user %}
+                <li>{{ link_to('layout.logout'|trans({}, 'FOSUserBundle') | trans(), "fos_user_security_logout") }}</li>
+                <li class="user"><a>{{ "user" | trans() ~ ": " ~ app.user.firstname ~ " " ~ app.user.lastname }}</a></li>
+            {% else %}
+                <li>{{ link_to('layout.login'|trans({}, 'FOSUserBundle') | trans(), "fos_user_security_login") }}</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<div id="page-wrapper">
+
+{% for flashMessage in app.session.flashbag.get("notice") %}
+<div class="flash-message">
+<em>Notice</em>: {{ flashMessage }}
+</div>
+{% endfor %}
+
+<div id="page-content">

@@ -1,0 +1,19 @@
+_service:
+    pattern:  /service.json
+    defaults: { _controller: "MyAppUserBundle:WebService:service", _format: json }
+
+_email:
+    pattern:  /email.json
+    defaults: { _controller: "MyAppUserBundle:WebService:email", _format: json }
+
+_failed_service:
+    pattern:  /failure.json
+    defaults: { _controller: "MyAppUserBundle:WebService:failure", _format: json }
+
+##########################################################
+
+#_events_list:
+#    pattern:  /{initial}/events-list.json
+#    defaults: { _controller: "MyAppUserBundle:WebServices:clientsList", _format: json }
+#    requirements:
+#        initial: ^[\w\*]$

@@ -1,12 +1,23 @@
+.idea
+.settings
+.buildpath
+.project
+/temp*
+
+composer.lock
+
 # Bootstrap
 app/bootstrap*
 
 # Symfony directories
-vendor/*
+vendor
 */logs/*
 */cache/*
 web/uploads/*
 web/bundles/*
+web/js
+web/images
+web/css
 
 # Configuration files
 app/config/parameters.ini

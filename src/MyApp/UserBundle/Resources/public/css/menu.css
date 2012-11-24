@@ -1,0 +1,57 @@
+/* MENU */
+
+div#menu {
+    height: 29px;
+    min-width: 1150px;
+    width: 100%;
+    padding-bottom: 2px;
+    z-index: 100;
+}
+
+div#menu div {
+    background: linear-gradient(to bottom, #6C9DAE 0%, #00A8CF 4%, #029ABB 96%, #3B88A2 100%) repeat scroll 0 0 transparent;
+    height: 27px;
+}
+
+div#menu div ul {
+    font-size: 11px;
+    height: 27px;
+    margin: 0 auto;
+    position: relative;
+    width: 1150px;
+    z-index: 101;
+    list-style: none outside none;
+}
+
+div#menu div ul li {
+    display: block;
+    float: left;
+    position: relative;
+}
+
+div#menu div ul li a {
+    display: block;
+    color: #FFFFFF;
+    line-height: 24px;
+    font-size: 14px;
+    outline: medium none;
+    text-decoration: none;
+    padding: 0 14px 3px;
+}
+
+div#menu div ul li:hover a {
+    background: #2186A0;
+}
+
+div#menu div ul li.user {
+    color: yellow;
+    float: right;
+    position: relative;
+}
+div#menu div ul li.user a {
+    color: white;
+}
+
+div#menu div ul li.user:hover a {
+    background: transparent;
+}

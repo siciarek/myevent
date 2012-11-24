@@ -1,0 +1,123 @@
+
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    translator: { fallback: en }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  %locale%
+    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:
+      - FOSUserBundle
+      - MyAppUserBundle
+
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        mapping_types:
+            enum: string
+            set: string
+            varbinary: string
+            tinyblob: text
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport:  %mailer_transport%
+    encryption: %mailer_encryption%
+    auth_mode:  %mailer_auth_mode%
+    host:       %mailer_host%
+    username:   %mailer_user%
+    password:   %mailer_password%
+#    spool:
+#        type: memory
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: MyApp\UserBundle\Entity\User
+    group:
+        group_class: MyApp\UserBundle\Entity\Group
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+            sortable: true
+
+stfalcon_tinymce:
+    include_jquery: false
+    tinymce_jquery: true
+    textarea_class: "tinymce"
+    language: %locale%
+
+    theme:
+        simple:
+            theme: "advanced"
+            plugin_insertdate_dateFormat" : "%%Y-%%m-%%d"
+            plugin_insertdate_timeFormat" : "%%H:%%M:%%S"
+            plugins: "spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
+
+            theme_advanced_buttons1: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,visualchars,nonbreaking,template,pagebreak,fullscreen,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl"
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym"
+            theme_advanced_buttons3: "ajaxsave,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect,|,ins,attribs,|,forecolor,backcolor"
+
+            theme_advanced_toolbar_location: "top"
+            theme_advanced_toolbar_align: "left"
+            theme_advanced_statusbar_location: "bottom"
+            theme_advanced_resizing: true,
+            paste_auto_cleanup_on_paste: true,
+
+            language: %locale%
+            gecko_spellcheck: true
+            spellchecker_languages: "English=en,+Polish=pl"
+
+            skin : "o2k7"
+            skin_variant : "silver"
+            content_css: "/bundles/myappuser/css/tinymce-document.css"
+
+            controls:
+                cut: [ bold_desc, tinymce_button_ajaxsave ]
+
+    tinymce_buttons:
+        ajaxsave:
+            title: "Zachowaj"
+            image: "asset[bundles/myappuser/images/icons/save.png]"
