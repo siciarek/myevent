@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{{ "My App" | trans() }}
-        :: {% if title is defined %}{{ title | trans() }}{% else %}{{ "Web application template" | trans() }}{% endif %}</title>
+    <title>{{ name }}
+        :: {% if title is defined %}{{ title | trans() }}{% else %}{{ description | trans() }}{% endif %}</title>
     <link rel="icon" sizes="16x16" href="{{ asset("favicon.ico") }}"/>
 
     {% stylesheets
@@ -34,11 +34,10 @@
     <div>
         <ul>
             <li>{{ link_to("Home" | trans(), "_homepage") }}</li>
-            <li>{{ link_to("Public page" | trans(), "_public") }}</li>
 
             {% if app.user %}
-                <li>{{ link_to("Secured page" | trans(), "_secured") }}</li>
-                <li>{{ link_to("Editor" | trans(), "_editor") }}</li>
+                <li>{{ link_to("Events list" | trans(), "_secured") }}</li>
+                <li>{{ link_to("Add event" | trans(), "_editor") }}</li>
             {% endif %}
 
             {% if app.user %}

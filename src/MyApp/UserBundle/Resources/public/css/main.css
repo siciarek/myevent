@@ -31,7 +31,9 @@ div#page-footer div#copyrights  {
     color: #18557F;
 }
 
-div#page-content h1 {
+div#page-content h1,
+div#page-content h2
+{
     color: #18557F;
     font: 22px/30px Verdana,Arial,Helvetica,sans-serif;
     letter-spacing: -0.5px;
@@ -39,7 +41,13 @@ div#page-content h1 {
     text-shadow: 1px 1px silver;
 }
 
+div#page-content h2 {
+    font: 16px Verdana,Arial,Helvetica,sans-serif;
+    text-shadow: 0px 0px silver;
+    margin-bottom: 6px;
+}
+
 div#page-content p {
-    font: 12px/1.2 Arial,Verdana,Helvetica,sans-serif;
+    font: 14px/1.2 Arial,Verdana,Helvetica,sans-serif;
     margin-bottom: 12px;
 }

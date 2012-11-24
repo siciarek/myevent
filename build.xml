@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 
-<project name="myapp" default="build-all-load" basedir=".">
+<project name="myevent" default="build-all-load" basedir=".">
 
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
