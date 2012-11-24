@@ -10,6 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
+     * @Template()
+     */
+    public function eventAction($id)
+    {
+        return array(
+            "admin" => $id == 1,
+            "title" => "Impreza gwiazdkowa dla uczniów",
+            "body" => "
+<p>21 grudnia 2012 roku o godz. 14:30 odbędzie się impreza gwiazdkowa uczniów klasy IIIb PSSP.</p>
+
+<p>W związku z tym mam prośbę do Państwa o zadeklarowanie swojego udziału przez
+dokonanie wpisu w poniższej tabeli.</p>
+
+<p>Pozdrawiam: Anna Siciarek.</p>
+
+            "
+        );
+    }
+
+    /**
      * @Route("/", name="_homepage")
      * @Template()
      */

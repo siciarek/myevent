@@ -1,3 +1,10 @@
+_event:
+    pattern:  /event/{id}/{slug}.html
+    defaults: { _controller: "MyAppUserBundle:Default:event", _format: html }
+    requirements:
+        id: ^[1-9]\d*$
+        slug: ^\w[\w\-]*\w$
+
 _service:
     pattern:  /service.json
     defaults: { _controller: "MyAppUserBundle:WebService:service", _format: json }

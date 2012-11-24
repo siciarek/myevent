@@ -23,12 +23,33 @@ class WebServiceController extends Controller
         $data = array();
 
         try {
+            $appname = $this->container->getParameter('app_name');
+            $username = $this->getUser()->getFirstName() . " " . $this->getUser()->getLastName();
+            $description = "Impreza gwiazdkowa dla naszych uczniów";
+
+            $subject = sprintf("%s [%s] %s", $appname, $username, $description);
+
+            $message = $this->renderView('MyAppUserBundle:Emails:event.html.twig',
+                array(
+                    "username" => $username,
+                    "gender" => "Pana",
+                    "description" => $description,
+                )
+            );
+
+            $plaintext = strip_tags($message);
+
+
+            $data[] = $subject;
+            $data[] = $message;
+            $data[] = $plaintext;
+
             $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
+                ->setSubject($subject)
                 ->setFrom('siciarek@gmail.com')
                 ->setTo('j.siciarek@sescom.pl')
-                ->setBody('My HTML body', 'text/html')
-                ->addPart('My amazing body in plain text', 'text/plain');
+                ->setBody($message, 'text/html')
+                ->addPart($plaintext, 'text/plain');
 
             $data[] = $this->get('mailer')->send($message);
 

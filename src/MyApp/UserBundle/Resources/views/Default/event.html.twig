@@ -1,0 +1,80 @@
+{% extends 'MyAppUserBundle::public.layout.html.twig' %}
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+    {{ body | raw }}
+
+    <p id="progress-info">Pozostało 3 dni, 12 godzin i 43 minuty</p>
+
+    <div id="gauge">
+        <div id="progress"></div>
+    </div>
+
+    {% if admin == true %}
+        <table id="participants">
+            <tr>
+                <th>data wpisu</th>
+                <th>kto</th>
+                <th>uczestnik</th>
+                <th class="declaration">deklaracja</th>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Wojciech Konnicki</td>
+                <td>Tata Julki</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>{{ "now" | date("Y-m-d H:i") }}</td>
+                <td>Joanna Czarek</td>
+                <td>Mama Zuzi</td>
+                <td>Będę na pewno, przyniosę ciasto a potem powiem z pamięci: Nunc quis tristique enim. Sed est ligula, gravida eget interdum id, pharetra eu orci. In molestie, enim at viverra lacinia.</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Mariola Gęśl</td>
+                <td>Mama Patrycji</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>{{ "now" | date("Y-m-d H:i") }}</td>
+                <td>Julia Konc</td>
+                <td>Mama Karola</td>
+                <td>Ja przyniosę naczynia jednorazowe</td>
+            </tr>
+        </table>
+
+    {% else %}
+
+    <table id="participants">
+        <tr>
+            <th>uczestnik</th>
+            <th class="declaration">deklaracja</th>
+        </tr>
+        <tr>
+            <td>Tata Julki</td>
+            <td>
+                <form>
+                    <textarea style="width:99%;height:100px;"></textarea>
+                    <input type="submit" value="Zapisz" style="height:36px;width:100%;margin-top:3px;" />
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Mama Zuzi</td>
+            <td>Będę na pewno, przyniosę ciasto a potem powiem z pamięci: Nunc quis tristique enim. Sed est ligula, gravida eget interdum id, pharetra eu orci. In molestie, enim at viverra lacinia.</td>
+        </tr>
+        <tr>
+            <td>Mama Patrycji</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Mama Karola</td>
+            <td>Ja przyniosę naczynia jednorazowe</td>
+        </tr>
+    </table>
+
+    {% endif %}
+
+{% endblock %}

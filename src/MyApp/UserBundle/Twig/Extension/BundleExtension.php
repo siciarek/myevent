@@ -111,6 +111,8 @@ class BundleExtension extends \Twig_Extension
             }
         }
 
+        $url = $name;
+
         if ($routeName !== null) {
             $url = $this->url_for($routeName, $params);
 
@@ -120,6 +122,10 @@ class BundleExtension extends \Twig_Extension
 
         if (!array_key_exists("title", $options)) {
             $options["title"] = $name;
+        }
+
+        if($url === $name) {
+            unset($options["title"]);
         }
 
         foreach ($options as $key => $value) {

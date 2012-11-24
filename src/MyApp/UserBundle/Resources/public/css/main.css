@@ -7,6 +7,32 @@ body {
     color: #313131;
 }
 
+table#participants {
+    width: 100%;
+}
+
+table#participants td,
+table#participants th {
+    border: 1px solid #18557F;
+    padding: 6px;
+}
+
+table#participants th {
+    font-weight: bold;
+    text-align: center;
+    background-color: #ABC6DD;
+    color: #18557F;
+    width: 15%;
+}
+
+table#participants td {
+    vertical-align: top;
+}
+
+table#participants th.declaration {
+    width: 55%;
+}
+
 div#page-wrapper,
 div#page-footer-wrapper {
     padding: 10px 10px 10px 10px;
@@ -51,3 +77,28 @@ div#page-content p {
     font: 14px/1.2 Arial,Verdana,Helvetica,sans-serif;
     margin-bottom: 12px;
 }
+
+div#gauge {
+    width:100%;
+    height:32px;
+    background:silver;
+    margin: 0 0 20px 0;
+}
+
+div#gauge div#progress {
+    background: #006400;
+    height:32px;
+    line-height: 32px;
+    padding-left: 23px;
+    vertical-align: middle;
+    width: 100px;
+}
+
+p#progress-info {
+    color: #006400;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    margin-top: 23px !important;
+    margin-bottom: 3px !important;
+}
+
