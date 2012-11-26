@@ -9,6 +9,7 @@ body {
 p, td, li {
     font-family: "Times New Roman", serif !important;
     font-size: 18px !important;
+    color: black !important;
 }
 
 p, li {

@@ -1,0 +1,112 @@
+div#event {
+    width: 100%;
+    vertical-align: top;
+}
+
+div#event div#form,
+div#event div#list {
+    float: left;
+}
+
+/*LIST*/
+
+div#event div#list {
+    margin-left: 24px;
+    width: 300px;
+}
+
+div#event div#list ul#participants {
+    font-size: 18px;
+    margin-top: -3px;
+}
+
+div#event div#list ul label,
+div#event div#list ul input[type="checkbox"] {
+    display:block;
+    float:left
+}
+
+div#event div#list ul label {
+    margin-left:6px;
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    font-weight: normal;
+    font-family: serif;
+    color: #313131;
+    text-shadow: none;
+}
+
+div#event div#list ul label.all {
+    background-image: url(/bundles/myappuser/images/icons/group.png);
+    font-weight: bold;
+}
+
+div#event div#list ul label.male {
+    background-image: url(/bundles/myappuser/images/icons/user-male.gif);
+}
+
+div#event div#list ul label.female {
+    background-image: url(/bundles/myappuser/images/icons/user-female.gif);
+}
+
+div#event div#list ul li {
+    clear: both;
+    margin-left: 4px;
+    height: 28px;
+}
+
+div#event div#list ul input[type="checkbox"] {
+    margin-top: 6px;
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+}
+
+/*FORM*/
+
+div#event div#form {
+}
+
+div#event div#form label,
+div#event div#list label {
+    text-shadow: 1px 1px silver;
+    font-size: 18px;
+    display: block;
+    float: left;
+    text-align: left;
+    color: #18557F;
+}
+
+div#event div#form textarea[name="details"] {
+    height: 350px !important;
+    width: 800px !important;
+}
+
+div#event div#form input,
+div#event div#form select {
+    color: #313131;
+    font-family: serif;
+    font-size: 20px;
+    display: block;
+    float: left;
+    height: 32px;
+    padding-left: 6px;
+    border: 1px solid #BBBBBB;
+}
+
+
+div#event div#form select {
+    margin-left: 3px;
+    height: 34px;
+}
+
+div#event div#form input#name {
+    width: 800px;
+}
+
+div#event div#form input#date {
+    width: 203px;
+}
+

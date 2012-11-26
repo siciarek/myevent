@@ -48,12 +48,12 @@ dokonanie wpisu w poniższej tabeli.</p>
     }
 
     /**
-     * @Route("/initiate-event.html", name="_initiate_event")
+     * @Route("/create-event.html", name="_create_event")
      * @Template()
      */
-    public function initiateEventAction()
+    public function createEventAction()
     {
-        return array("title" => "Initiate Event");
+        return array("title" => "Create Event");
     }
 
     /**

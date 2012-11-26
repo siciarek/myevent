@@ -24,6 +24,7 @@ twig:
     globals:
         name: %app_name%
         description: %app_description%
+        jquitheme: smoothnessnr
 
 # Assetic Configuration
 assetic:
@@ -95,6 +96,8 @@ stfalcon_tinymce:
     theme:
         simple:
             theme: "advanced"
+            entity_encoding : "raw"
+
             plugin_insertdate_dateFormat" : "%%Y-%%m-%%d"
             plugin_insertdate_timeFormat" : "%%H:%%M:%%S"
             plugins: "spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
@@ -105,8 +108,11 @@ stfalcon_tinymce:
 
             theme_advanced_toolbar_location: "top"
             theme_advanced_toolbar_align: "left"
-            theme_advanced_statusbar_location: "bottom"
-            theme_advanced_resizing: true,
+
+            theme_advanced_statusbar_location : "bottom"
+            theme_advanced_path : false
+            theme_advanced_resizing : false
+
             paste_auto_cleanup_on_paste: true,
 
             language: %locale%
@@ -116,9 +122,6 @@ stfalcon_tinymce:
             skin : "o2k7"
             skin_variant : "silver"
             content_css: "/bundles/myappuser/css/tinymce-document.css"
-
-            controls:
-                cut: [ bold_desc, tinymce_button_ajaxsave ]
 
     tinymce_buttons:
         ajaxsave:

@@ -1,0 +1,51 @@
+MyApp\UserBundle\Entity\Participant:
+    type: entity
+    table: null
+    repositoryClass: MyApp\UserBundle\Entity\ParticipantRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        first_name:
+          type: string
+          length: 64
+        last_name:
+          type: string
+          length: 64
+        email:
+          type: string
+          length: 255
+          nullable: true
+        gender:
+          type: string
+          length: 16
+        city:
+          type: string
+          length: 64
+          nullable: true
+        region:
+          type: string
+          length: 32
+          nullable: true
+        address:
+          type: string
+          length: 255
+          nullable: true
+        description_private:
+          type: string
+          nullable: true
+        description_public:
+          type: string
+          nullable: true
+        created_at:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: create
+        updated_at:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: update

@@ -31,8 +31,8 @@ class WebServiceController extends Controller
 
             $message = $this->renderView('MyAppUserBundle:Emails:event.html.twig',
                 array(
-                    "username" => $username,
-                    "gender" => "Pana",
+                    "username"    => $username,
+                    "gender"      => "Pana",
                     "description" => $description,
                 )
             );
@@ -65,15 +65,86 @@ class WebServiceController extends Controller
         return new Response($json);
     }
 
-    public function serviceAction()
+    public function createEventAction(Request $request)
+    {
+        $frame = array();
+        $data = array();
+        $json = $request->query->get('json');
+
+        try {
+            $input = json_decode($json, true);
+            $frame = $this->frames["ok"];
+            $frame["msg"] = "New event has been created successfuly";
+            $frame["data"] = $input["data"];
+        } catch (\Exception $e) {
+            $frame = $this->frames["error"];
+            $frame["msg"] = $e->getMessage();
+            $frame["data"]["errno"] = $e->getCode();
+        }
+
+        return new Response(json_encode($frame));
+    }
+
+    public function participantsListAction()
     {
         $frame = array();
         $data = array();
 
         try {
-            $data = array(1, 2, Encoder::encode("helloworld"));
+            $data = array(
+                array(
+                    "id"                  => 234,
+                    "first_name"          => "Jan",
+                    "last_name"           => "Kowalski",
+                    "email"               => "siciarek@gmail.com",
+                    "gender"              => "male",
+                    "city"                => "Gdynia",
+                    "region"              => "pomorskie",
+                    "address"             => "Portowa 9",
+                    "description_private" => "Spoko gość",
+                    "description_public"  => "Tata Krysi",
+                ),
+                array(
+                    "id"                  => 235,
+                    "first_name"          => "Michał",
+                    "last_name"           => "Waśniewski",
+                    "email"               => "siciarek@gmail.com",
+                    "gender"              => "male",
+                    "city"                => "Gdynia",
+                    "region"              => "pomorskie",
+                    "address"             => "Miła 2",
+                    "description_private" => "Spoko gość",
+                    "description_public"  => "Tata Urszulki",
+                ),
+                array(
+                    "id"                  => 236,
+                    "first_name"          => "Janina",
+                    "last_name"           => "Widelec",
+                    "email"               => "siciarek@gmail.com",
+                    "gender"              => "female",
+                    "city"                => "Rumia",
+                    "region"              => "pomorskie",
+                    "address"             => "Danuty 34",
+                    "description_private" => "Na nią lepiej uważać",
+                    "description_public"  => "Mama Jasia",
+                ),
+                array(
+                    "id"                  => 237,
+                    "first_name"          => "Julia",
+                    "last_name"           => "Kamińska",
+                    "email"               => "siciarek@gmail.com",
+                    "gender"              => "female",
+                    "city"                => "Wejherowo",
+                    "region"              => "pomorskie",
+                    "address"             => "Aleja Morska 2",
+                    "description_private" => "Ona jest OK",
+                    "description_public"  => "Mama Lucynki",
+                ),
+            );
 
-            $frame = $this->frames["ok"];
+            $frame = $this->frames["data"];
+            $frame["msg"] = "Participants list of user #" . $this->getUser()->getId();
+            $frame["totalCount"] = count($data);
             $frame["data"] = $data;
         } catch (\Exception $e) {
             $frame = $this->frames["error"];
@@ -85,29 +156,7 @@ class WebServiceController extends Controller
         return new Response($json);
     }
 
-    public function failureAction()
-    {
-        $frame = array();
-        $data = array();
-
-        try {
-
-            throw new \Exception("Test error", 666);
-
-            $frame = $this->frames["ok"];
-            $frame["data"] = $data;
-        } catch (\Exception $e) {
-            $frame = $this->frames["error"];
-            $frame["msg"] = $e->getMessage();
-            $frame["data"]["errno"] = $e->getCode();
-        }
-
-        $json = json_encode($frame);
-        return new Response($json);
-    }
-
-    public
-    function preExecute()
+    public function preExecute()
     {
         $this->frames["ok"] = array(
             "success"  => true,
@@ -115,6 +164,15 @@ class WebServiceController extends Controller
             "datetime" => date("Y-m-d H:i:s"),
             "msg"      => "OK",
             "data"     => array(),
+        );
+
+        $this->frames["data"] = array(
+            "success"    => true,
+            "type"       => "data",
+            "datetime"   => date("Y-m-d H:i:s"),
+            "msg"        => "Data",
+            "totalCount" => 0,
+            "data"       => array(),
         );
 
         $this->frames["error"] = array(

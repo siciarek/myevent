@@ -1,12 +1,7 @@
 /* TINYMCE GUI STYLE: */
 
-textarea[name="content"] {
-    height: 350px;
-    width: 1000px;
-}
-
-a#mce_0_fontselect_text,
-a#mce_0_fontsizeselect_text
+a[id$="fontselect_text"],
+a[id$="fontsizeselect_text"]
 {
     width: 100px !important;
 }

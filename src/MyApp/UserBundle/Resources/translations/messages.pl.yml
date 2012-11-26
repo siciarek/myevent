@@ -8,7 +8,7 @@
 "Home" : "Strona główna"
 
 "Events List" : "Lista wydarzeń"
-"Initiate Event" : "Inicjuj wydarzenie"
+"Create Event" : "Utwórz wydarzenie"
 "Participants" : "Uczestnicy"
 "My Settings" : "Moje ustawienia"
 
@@ -18,6 +18,16 @@
 "Username or E-Mail" : "Login lub email"
 "Password"           : "Hasło"
 "Remember"           : "Zapamiętaj mnie"
+
+# Event form:
+
+"Name" : "Nazwa"
+"Start time": "Czas rozpoczęcia"
+"Details" : "Szczegóły"
+"Whole day" : "Cały dzień"
+"Here you can enter the event details" : "Tutaj wpisz szczegóły"
+"Participants List" : "Lista uczestników"
+"All": "Wszyscy"
 
 # Other:
 

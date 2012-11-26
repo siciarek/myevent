@@ -1,0 +1,165 @@
+{% extends 'MyAppUserBundle::public.layout.html.twig' %}
+{% block content %}
+
+    <h1 xmlns="http://www.w3.org/1999/html">{{ title | trans() }}</h1>
+
+    <style type="text/css">
+        .ui-widget-content {
+            font-size: 12px !important;
+        }
+    </style>
+
+    <div id="event">
+         <div id="form">
+             <label for="name">{{ "Name" | trans() }}: </label>
+             <div class="separator"></div>
+             <input id="name" name="name" type="text" value=""/>
+             <div class="separator"></div>
+
+             <label for="date">{{ "Start time" | trans() }}: </label>
+             <div class="separator"></div>
+             <input id="date" name="date" type="text" value="{{ "now" | date("Y-m-d") }}"/>
+             <select id="hour" name="hour">
+                 <option value="0">{{ "Whole day" | trans() }}</option>
+                 {% for h in 0..24 %}
+                     {% for m in 0..60 if m is divisibleby(15) and m < 60 %}
+                         <option value="{{ "%02d:%02d:00" | format(h, m) }}">{{ "%02d:%02d" | format(h, m) }}</option>
+                     {% endfor %}
+                 {% endfor %}
+             </select>
+             <div class="separator"></div>
+
+             <label for="details"
+                    onclick="$('#details').tinymce().focus()">{{ "Here you can enter the event details" | trans() }}: </label>
+             <div class="separator"></div>
+             <textarea id="details" name="details" class="tinymce"></textarea>
+
+         </div>
+         <div id="list">
+             <label for="date">{{ "Participants List" | trans() }}: </label>
+             <div class="separator"></div>
+             <ul id="participants">
+                 <li><input type="checkbox" name="participants" id="p0"/> <label class="all" for="p0">{{ "All" | trans() }}</label></li>
+             </ul>
+         </div>
+         <div class="separator"></div>
+    </div>
+
+    {{ tinymce_init() }}
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        function getRequestFrame(data) {
+            data = data || {};
+
+            var datetime = (new Date()).toISOString().replace(/T/, " ").replace(/\.[^\.]+$/,"");
+
+            return {
+                success: true,
+                type: "request",
+                datetime: datetime,
+                msg: "Create Event",
+                data: data
+            };
+        }
+
+
+        function tinymce_button_ajaxsave() {
+            var data = {};
+            var details = $("textarea[name='details']").val();
+            var participants = [];
+
+            if (details.length === 0) {
+                return;
+            }
+
+
+            $("input[name='participants']:checked").each(function(index, element){
+                var id = parseInt(element.id.replace(/^p/, ''));
+                if(id != 0) {
+                    participants.push(id);
+                }
+            });
+
+            var hour = wholeday = $("select[name='hour']").val();
+
+            data["name"] = $("input[name='name']").val();
+            data["allday"] = hour === "0";
+            data["date"] = $("input[name='date']").val() + " " + (data["allday"] ? "00:00:00" : hour);
+            data["details"] = details;
+            data["participants"] = participants;
+
+            var request = getRequestFrame(data);
+
+            $.ajax({
+                url: "{{ url_for("_create_event_execute") }}",
+                type: "POST",
+                data: {
+                    json: $.toJSON(request)
+                },
+                success: function (response) {
+                    alert(__(response.msg));
+                }
+            });
+        }
+
+        jQuery(document).ready(function () {
+
+            // Fill Participants list:
+            $.ajax({
+                async: false,
+                url: "{{ url_for("_participants_list") }}",
+                success: function (response) {
+                    for(var i = 0; i < response.data.length; i++) {
+                        var person = response.data[i];
+                        var fullname = person.first_name + " " + person.last_name;
+
+                        var li = '<li><input type="checkbox" name="participants" id="p'
+                                + person.id + '"/> <label class="'
+                                + person.gender + '" for="p'
+                                + person.id + '">'
+                                + fullname + '</label></li>';
+
+                        $("ul#participants").append(li);
+                    }
+                }
+            });
+
+            var id = 4;
+            var gender = "female";
+            var fullname = "Julianna Olak";
+
+
+            $("ul#participants input[id!='p0']").change(function(){
+                if($(this).is(":checked") === false) {
+                    $("ul#participants input#p0").attr("checked", false);
+                }
+                else
+                {
+                    var allchecked = $("input[name='participants']:checked").length >= $("input[name='participants']").length - 1;
+                    $("ul#participants input#p0").attr("checked", allchecked);
+                }
+            });
+
+            $("ul#participants input#p0").change(function(){
+                $("input[name='participants']").attr("checked", $(this).is(":checked"));
+            });
+
+            $("#date").datepicker({
+                monthNames: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+                monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Czr', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
+                dayNames: ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+                dayNamesShort: ['Nd', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob'],
+                dayNamesMin: ['N', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'So'],
+                minDate: new Date(),
+                firstDay: 1,
+                constrainInput: true,
+                dateFormat: 'dd-mm-yy'
+            });
+        });
+
+        //]]>
+    </script>
+
+{% endblock %}

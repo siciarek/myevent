@@ -1,0 +1,24 @@
+MyApp\UserBundle\Entity\Event:
+    type: entity
+    table: null
+    repositoryClass: MyApp\UserBundle\Entity\EventRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+            nullable: false
+        details:
+            type: string
+            nullable: true
+#
+#        date:
+#
+#        allday:
+#
+#        user_id:
+

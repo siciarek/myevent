@@ -7,6 +7,16 @@ body {
     color: #313131;
 }
 
+div.separator {
+    clear: both;
+    height: 10px;
+}
+
+/*EVENT PAGE*/
+
+
+/*PARTICIPANTS TABLE*/
+
 table#participants {
     width: 100%;
 }

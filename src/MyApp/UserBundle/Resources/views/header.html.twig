@@ -6,25 +6,28 @@
         :: {% if title is defined %}{{ title | trans() }}{% else %}{{ description | trans() }}{% endif %}</title>
     <link rel="icon" sizes="16x16" href="{{ asset("favicon.ico") }}"/>
 
+    {% javascripts
+    '@MyAppUserBundle/Resources/public/js/jquery-1.8.3.min.js'
+    '@MyAppUserBundle/Resources/public/js/jquery.json-2.4.min.js'
+    '@MyAppUserBundle/Resources/public/js/translations.js'
+    output="js/myapp.js" %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset("/bundles/myappuser/js/jquery-ui-1.9.2.custom/css/" ~ jquitheme ~ "/jquery-ui-1.9.2.custom.min.css") }}" />
+    <script type="text/javascript" src="{{ asset("/bundles/myappuser/js/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js") }}" ></script>
+
     {% stylesheets
     '@MyAppUserBundle/Resources/public/css/reset.css'
     '@MyAppUserBundle/Resources/public/css/icons.css'
     '@MyAppUserBundle/Resources/public/css/main.css'
     '@MyAppUserBundle/Resources/public/css/menu.css'
     '@MyAppUserBundle/Resources/public/css/signin-form.css'
+    '@MyAppUserBundle/Resources/public/css/event-form.css'
     '@MyAppUserBundle/Resources/public/css/tinymce.css'
     output="css/myapp.css" %}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
-
-    {% javascripts
-    '@MyAppUserBundle/Resources/public/js/jquery-1.8.3.min.js'
-    '@MyAppUserBundle/Resources/public/js/translations.js'
-    output="css/myapp.js" %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    {% block jsinclude %}{% endblock %}
 
 </head>
 <body>

@@ -1,3 +1,5 @@
+# pages:
+
 _event:
     pattern:  /event/{id}/{slug}.html
     defaults: { _controller: "MyAppUserBundle:Default:event", _format: html }
@@ -5,17 +7,19 @@ _event:
         id: ^[1-9]\d*$
         slug: ^\w[\w\-]*\w$
 
-_service:
-    pattern:  /service.json
-    defaults: { _controller: "MyAppUserBundle:WebService:service", _format: json }
+# webservices
 
 _email:
     pattern:  /email.json
     defaults: { _controller: "MyAppUserBundle:WebService:email", _format: json }
 
-_failed_service:
-    pattern:  /failure.json
-    defaults: { _controller: "MyAppUserBundle:WebService:failure", _format: json }
+_participants_list:
+    pattern:  /participants-list.json
+    defaults: { _controller: "MyAppUserBundle:WebService:participantsList", _format: json }
+
+_create_event_execute:
+    pattern:  /create-event.json
+    defaults: { _controller: "MyAppUserBundle:WebService:createEvent", _format: json }
 
 ##########################################################
 
